@@ -1,4 +1,4 @@
-package com.masai.Model;
+package com.foodu.Model;
 
 import java.util.ArrayList;
 import java.util.List;
