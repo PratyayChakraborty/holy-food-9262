@@ -1,4 +1,4 @@
-package com.masai.Model;
+package com.foodu.Model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;

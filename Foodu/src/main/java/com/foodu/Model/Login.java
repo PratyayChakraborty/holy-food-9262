@@ -1,4 +1,4 @@
-package com.masai.Model;
+package com.foodu.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

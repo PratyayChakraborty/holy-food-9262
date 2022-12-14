@@ -1,4 +1,4 @@
-package com.masai.Model;
+package com.foodu.Model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
