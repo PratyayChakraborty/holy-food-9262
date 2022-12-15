@@ -1,19 +1,20 @@
 package com.foodu.Service;
 
 import java.util.List;
+
+import com.foodu.Exception.CustomerException;
 import com.foodu.Model.Customer;
-import com.foodu.Model.Restaurant;
 
 public interface CustomerServiceDAO {
 	
-	public Customer addCustomer (Customer customer);
+	public Customer addCustomer (Customer customer) throws CustomerException;
 	
-	public Customer updateCustomer (Customer customer);
+	public Customer updateCustomer (Customer customer) throws CustomerException;
 	
-	public Customer removeCustomer (Customer customer);
+	public Customer removeCustomer (Integer customerId)throws CustomerException;
 	
-	public Customer viewCustomer (Customer customer);
+	public Customer viewCustomer (Integer customerId)throws CustomerException;
 	
-	public List<Customer> viewAllCustomers (Restaurant rest);
+	public List<Customer> viewAllCustomers (Customer customer)throws CustomerException;
 
 }
