@@ -14,6 +14,46 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 	
+	//CategoryException
+	@ExceptionHandler(RestaurantException.class)
+	public ResponseEntity<MyErrorDetails> myExpHandler(RestaurantException ie, WebRequest req){
+		
+		MyErrorDetails err = new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ie.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+	
+	
+	@ExceptionHandler(CategoryException.class)
+	public ResponseEntity<MyErrorDetails> myExpHandler(CategoryException ie, WebRequest req){
+		
+		MyErrorDetails err = new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ie.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+	
+	
+	@ExceptionHandler(ItemException.class)
+	public ResponseEntity<MyErrorDetails> myExpHandler(ItemException ie, WebRequest req){
+		
+		MyErrorDetails err = new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ie.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+	
+	
 	@ExceptionHandler(CustomerException.class)
 	public ResponseEntity<MyErrorDetails> myExpHandler(CustomerException ie, WebRequest req){
 		
@@ -21,7 +61,6 @@ public class GlobalExceptionHandler {
 		err.setTimestamp(LocalDateTime.now());
 		err.setMessage(ie.getMessage());
 		err.setDetails(req.getDescription(false));
-		
 		
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
 		
@@ -47,7 +86,6 @@ public class GlobalExceptionHandler {
 		@ExceptionHandler(NoHandlerFoundException.class)
 		public ResponseEntity<MyErrorDetails> mynotFoundHandler(NoHandlerFoundException nfe,WebRequest req)  {
 				
-		
 		MyErrorDetails err=new MyErrorDetails(LocalDateTime.now(), nfe.getMessage(), req.getDescription(false));
 		
 			return new ResponseEntity<>(err,HttpStatus.BAD_REQUEST);
