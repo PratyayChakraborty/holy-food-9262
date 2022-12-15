@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,6 +36,7 @@ public class Customer {
 	@JsonIgnore
 	private String password;
 	
+	@Embedded
 	@OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL)
 	private Set<Address> addresses = new HashSet<>();
 	
