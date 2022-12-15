@@ -7,6 +7,6 @@ package com.foodu.Repsitory;
  * @author sayed
  *
  */
-public interface BillRepository {
+public interface spellingmistake {
 
 }
