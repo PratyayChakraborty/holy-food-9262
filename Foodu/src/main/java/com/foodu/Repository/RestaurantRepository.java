@@ -1,6 +1,7 @@
 package com.foodu.Repository;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,8 +12,8 @@ import com.foodu.Model.Restaurant;
 
 @Repository
 public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>{
-	public List<Restaurant> findByRestaurantName(String restaurantName);
 	
+	public Set<Restaurant> findByRestaurantName(String restaurantName);
 	public Restaurant findByAddress(Address address);
 	
 	public Restaurant findByContactNumber(String number);

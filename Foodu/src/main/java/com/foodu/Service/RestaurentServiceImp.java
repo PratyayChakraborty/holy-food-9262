@@ -145,7 +145,7 @@ public class RestaurentServiceImp implements ResturentService{
 
 	public Set<GetRestaurantDto> viewRestaurantByItemName(String itemName) throws ItemException, RestaurantException{
 	
-	List<Item> itms = ir.findByItemNameContaining(itemName);
+	Set<Restaurant> itms = rr.findByRestaurantName(itemName);
 	
 //	System.out.println(itms);
 	
@@ -156,9 +156,9 @@ public class RestaurentServiceImp implements ResturentService{
 	Set<GetRestaurantDto> rDtos = new HashSet<>();
 
 
-	for(Item i : itms) {
+	for(Restaurant i : itms) {
 
-		GetRestaurantDto rDto = this.modelMapper.map(i.getRestaurant(), GetRestaurantDto.class);
+		GetRestaurantDto rDto = this.modelMapper.map(i.getRestaurantId(), GetRestaurantDto.class);
 		
 	    rDtos.add(rDto);
 	}
