@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.foodu.Model.Customer;
 
 @Repository
-public interface CustomerRepogitory extends JpaRepository<Customer, Integer>{
+public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 
 }

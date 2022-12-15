@@ -8,8 +8,6 @@ import org.springframework.context.annotation.Bean;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-
-
 @SpringBootApplication
 @EnableSwagger2
 public class FooduApplication {
