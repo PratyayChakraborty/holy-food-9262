@@ -1,5 +1,6 @@
 package com.foodu.Controller;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.Valid;
@@ -68,7 +69,7 @@ public class RstaurantController {
 		return new ResponseEntity<Restaurant>(rest, HttpStatus.OK);
 	}
 
-	@GetMapping("/viewRestaurentbyId/{resId}")
+	@GetMapping("/viewRestaurentbyid/{resId}")
 	public ResponseEntity<GetRestaurantDto> viewRestaurentbyId(@PathVariable("resId") Integer resId)
 			throws RestaurantException {
 		
@@ -76,8 +77,14 @@ public class RstaurantController {
 			return new ResponseEntity<GetRestaurantDto>(rest,HttpStatus.ACCEPTED);
 	}
 	
-	
-	@GetMapping("/viewRestaurentbyitemName/{itemName}")
+	@GetMapping("/viewRestaurentbyitemname/{city}")
+	public ResponseEntity<List<GetRestaurantDto>> viewNearByRestaurant(@RequestParam("city") String city)
+			throws RestaurantException {
+		
+		List<GetRestaurantDto>  rest=resServ.viewNearByRestaurant(city);
+			return new ResponseEntity<List<GetRestaurantDto> >(rest,HttpStatus.ACCEPTED);
+	}
+	@GetMapping("/viewRestaurentbyitemname/{itemName}")
 	public ResponseEntity<Set<GetRestaurantDto>> viewRestaurentbyName(@RequestParam("itemName") String itemName)
 			throws RestaurantException {
 		

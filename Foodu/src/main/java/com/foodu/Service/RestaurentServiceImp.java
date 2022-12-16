@@ -144,16 +144,36 @@ public class RestaurentServiceImp implements ResturentService{
 
 	@Override
 	public List<GetRestaurantDto> viewNearByRestaurant(String city) throws RestaurantException {
-		// TODO Auto-generated method stub
-		return null;
+		List<Address> itms = ar.findByCity(city);
+		
+		System.out.println(itms);
+		
+		if(itms.size() == 0) {
+			throw new ItemException("No restaurant found in "+city);
+		}
+		
+		List<GetRestaurantDto> rDtos = new ArrayList<>();
+
+
+		for(Address a : itms) {
+
+			GetRestaurantDto rDto = this.modelMapper.map(rr.findByAddress(a), GetRestaurantDto.class);
+			
+		    rDtos.add(rDto);
+		}
+		
+		if(rDtos.isEmpty())
+			throw new ItemException("No restaurant found in "+city);
+		
+		return rDtos;
 	}
 
 
 	public Set<GetRestaurantDto> viewRestaurantByItemName(String itemName) throws ItemException, RestaurantException{
+
+	List<Item> itms = ir.findByitemName(itemName);
 	
-	Set<Restaurant> itms = rr.findByRestaurantName(itemName);
-	
-//	System.out.println(itms);
+	System.out.println(itms);
 	
 	if(itms.size() == 0) {
 		throw new ItemException("No such item exists...");
@@ -162,9 +182,9 @@ public class RestaurentServiceImp implements ResturentService{
 	Set<GetRestaurantDto> rDtos = new HashSet<>();
 
 
-	for(Restaurant i : itms) {
+	for(Item i : itms) {
 
-		GetRestaurantDto rDto = this.modelMapper.map(i.getRestaurantId(), GetRestaurantDto.class);
+		GetRestaurantDto rDto = this.modelMapper.map(i.getRestaurant(), GetRestaurantDto.class);
 		
 	    rDtos.add(rDto);
 	}
