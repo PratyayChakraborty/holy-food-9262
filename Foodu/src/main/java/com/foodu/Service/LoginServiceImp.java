@@ -53,7 +53,7 @@ public class LoginServiceImp implements LoginService {
 
 			String key = RandomString.make(4);
 
-			CurrentUserSession currentUser = new CurrentUserSession(existingRes.getRestaurantId(), key,dto.getRole(), LocalDateTime.now());
+			CurrentUserSession currentUser = new CurrentUserSession(existingRes.getRestaurantId(),dto.getRole(), key, LocalDateTime.now());
 
 			cus.save(currentUser);
 
