@@ -17,9 +17,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class CurrentUserSession {
-	
-	
-
 		
 	@Id
 	@Column(unique = true)
