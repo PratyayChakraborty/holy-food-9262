@@ -30,7 +30,7 @@ public class OrderDetails {
 	private Boolean orderStatus;
 	
 	@OneToOne
-	@JsonIgnore
+//	@JsonIgnore
 	private Address orderAddress;
 	
 	@ManyToOne(cascade = CascadeType.ALL)

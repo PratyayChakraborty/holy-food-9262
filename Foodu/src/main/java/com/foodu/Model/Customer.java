@@ -35,20 +35,26 @@ public class Customer {
 	@JsonIgnore
 	private String password;
 	
-	@OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL)
+	@OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL,mappedBy = "customer")
 	private Set<Address> addresses = new HashSet<>();
 	
 	
+	public Customer() {
+		
+	}
+
+
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
 	private List<OrderDetails> orders = new ArrayList<>();
 	
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private FoodCart foodCart;
+//	@OneToOne(cascade = CascadeType.ALL)
+//	private FoodCart foodCart;
 
 
 	public Customer(Integer customerId, String fullName, Integer age, String gender, String mobileNumber, String email,
-			String password, FoodCart foodCart) {
+			String password) {
 		super();
 		this.customerId = customerId;
 		this.fullName = fullName;
@@ -57,7 +63,7 @@ public class Customer {
 		this.mobileNumber = mobileNumber;
 		this.email = email;
 		this.password = password;
-		this.foodCart = foodCart;
+//		this.foodCart = foodCart;
 	}
 
 	
@@ -170,15 +176,15 @@ public class Customer {
 
 
 
-	public FoodCart getFoodCart() {
-		return foodCart;
-	}
-
-
-
-	public void setFoodCart(FoodCart foodCart) {
-		this.foodCart = foodCart;
-	}
+//	public FoodCart getFoodCart() {
+//		return foodCart;
+//	}
+//
+//
+//
+//	public void setFoodCart(FoodCart foodCart) {
+//		this.foodCart = foodCart;
+//	}
 
 
 
@@ -186,7 +192,7 @@ public class Customer {
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", fullName=" + fullName + ", age=" + age + ", gender=" + gender
 				+ ", mobileNumber=" + mobileNumber + ", email=" + email + ", password=" + password + ", addresses="
-				+ addresses + ", foodCart=" + foodCart + "]";
+				+ addresses +  "]";
 	}
 	
 	
