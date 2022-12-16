@@ -14,6 +14,7 @@ import com.foodu.Model.Customer;
 import com.foodu.Model.Login;
 import com.foodu.Model.Restaurant;
 import com.foodu.Repository.CurrentUserRepo;
+import com.foodu.Repository.CustomerRepository;
 import com.foodu.Repository.RestaurantRepository;
 
 import net.bytebuddy.utility.RandomString;
@@ -23,8 +24,12 @@ public class LoginServiceImp implements LoginService {
 	
 	@Autowired
 	private RestaurantRepository rr;
+	
 	@Autowired
 	private CurrentUserRepo cus;
+	
+	@Autowired
+	private CustomerRepository customerRepository;
 
 	@Override
 	public String logIntoAccount(LogInDto dto) throws LoginException {
@@ -63,6 +68,33 @@ public class LoginServiceImp implements LoginService {
 		
 		}else if(role.equalsIgnoreCase("Customer")) {
 			
+			Customer existingCus=customerRepository.findByMobileNumber(dto.getMobileNo());
+			
+			if (existingCus == null) {
+
+				throw new LoginException("Please Enter a valid mobile number");
+
+			}
+			
+			Optional<CurrentUserSession> validCustomerSessionOpt2 = cus.findById(existingCus.getCustomerId());
+
+			if (validCustomerSessionOpt2.isPresent()) {
+
+				throw new LoginException("User already Logged In with this number");
+
+			}
+			
+			if (existingCus.getPassword().equals(dto.getPassword())) {
+
+				String key = RandomString.make(4);
+
+				CurrentUserSession currentUser2 = new CurrentUserSession(existingCus.getCustomerId(), key,dto.getRole(), LocalDateTime.now());
+
+				cus.save(currentUser2);
+
+				return "Login Succsessfull :"+currentUser2.toString();
+			}
+			
 			
 			return "Login Succsessfull :";
 			
@@ -74,16 +106,13 @@ public class LoginServiceImp implements LoginService {
 
 	@Override
 	public String logOutFromAccount(String key) throws LoginException {
-CurrentUserSession validCustomerSession = cus.findByUuid(key);
-		
+		CurrentUserSession validCustomerSession = cus.findByUuid(key);
 		
 		if(validCustomerSession == null) {
-			throw new LoginException("User Not Logged In with this number");
-			
+			throw new LoginException("User Not Logged In with this number");	
 		}
 		
 		cus.delete(validCustomerSession);
-		
 		
 		return "Logged Out !";
 	}
