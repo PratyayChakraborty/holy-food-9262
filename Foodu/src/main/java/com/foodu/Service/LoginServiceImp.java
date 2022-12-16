@@ -28,6 +28,11 @@ public class LoginServiceImp implements LoginService {
 
 	@Override
 	public String logIntoAccount(LogInDto dto) throws LoginException {
+		
+		String role=dto.getRole();
+		
+		if(role.equalsIgnoreCase("Restaurant")) {
+		
 		Restaurant existingRes = rr.findByContactNumber(dto.getMobileNo());
 
 		if (existingRes == null) {
@@ -48,13 +53,23 @@ public class LoginServiceImp implements LoginService {
 
 			String key = RandomString.make(4);
 
-			CurrentUserSession currentUser = new CurrentUserSession(existingRes.getRestaurantId(), key, LocalDateTime.now());
+			CurrentUserSession currentUser = new CurrentUserSession(existingRes.getRestaurantId(), key,dto.getRole(), LocalDateTime.now());
 
 			cus.save(currentUser);
 
 			return "Login Succsessfull :"+currentUser.toString();
 		} else
 			throw new LoginException("Please Enter a valid password");
+		
+		}else if(role.equalsIgnoreCase("Customer")) {
+			
+			
+			return "Login Succsessfull :";
+			
+		}else {
+			return "give valid user";
+			
+		}
 	}
 
 	@Override

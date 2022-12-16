@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.foodu.DTO.GetRestaurantDto;
 import com.foodu.DTO.RestaurantDTO;
+import com.foodu.DTO.RestaurantItemDto;
 import com.foodu.Exception.ItemException;
 import com.foodu.Exception.RestaurantException;
 import com.foodu.Model.Restaurant;
@@ -23,4 +24,5 @@ public interface ResturentService {
 	
 	public Set<GetRestaurantDto> viewRestaurantByItemName(String name) throws ItemException, RestaurantException;
 	
+	public String addItemToResaurant(RestaurantItemDto RsI) throws ItemException, RestaurantException;
 }

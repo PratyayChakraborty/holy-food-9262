@@ -33,11 +33,11 @@ public class Item {
 	
 	
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Category category;
 
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JsonIgnore
 	private Restaurant restaurant;
 
