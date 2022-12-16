@@ -58,12 +58,15 @@ public class ItemServiceDAOImpl implements ItemServiceDAO{
 	@Override
 	public List<Item> viewAllItems(Category cat) throws CategoryException {
 		// TODO Auto-generated method stub
+		// need to implement this method
 		return null;
 	}
 
 	@Override
 	public List<Item> viewAllItems(Restaurant rest) throws RestaurantException {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 
+		// mapping with restaurent is neccessary for this method
+		
 		return null;
 	}
 
