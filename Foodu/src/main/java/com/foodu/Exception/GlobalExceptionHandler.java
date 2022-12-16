@@ -26,9 +26,10 @@ public class GlobalExceptionHandler {
 		
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
 		
-	}
-	@ExceptionHandler(LoginException.class)
-	public ResponseEntity<MyErrorDetails> myAnyExpHandler(LoginException ie,WebRequest req){
+	} 
+	
+	@ExceptionHandler(BillException.class)
+	public ResponseEntity<MyErrorDetails> myAnyExpHandler(BillException ie,WebRequest req){
 		
 		
 		MyErrorDetails err = new MyErrorDetails();
@@ -40,9 +41,23 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
 		
 	}
+
 	@ExceptionHandler(RestaurantException.class)
 	public ResponseEntity<MyErrorDetails> myAnyExpHandler(RestaurantException ie,WebRequest req){
 		
+		
+		MyErrorDetails err = new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ie.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+	
+	@ExceptionHandler(CategoryException.class)
+	public ResponseEntity<MyErrorDetails> myExpHandler(CategoryException ie, WebRequest req){
 		
 		MyErrorDetails err = new MyErrorDetails();
 		err.setTimestamp(LocalDateTime.now());
