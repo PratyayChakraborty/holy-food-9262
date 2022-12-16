@@ -13,7 +13,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-
+	
 	@ExceptionHandler(ItemException.class)
 	public ResponseEntity<MyErrorDetails> myAnyExpHandler(ItemException ie,WebRequest req){
 		
@@ -41,8 +41,7 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
 		
 	}
-	
-	
+
 	@ExceptionHandler(RestaurantException.class)
 	public ResponseEntity<MyErrorDetails> myAnyExpHandler(RestaurantException ie,WebRequest req){
 		

@@ -80,7 +80,7 @@ public class RestaurentServiceImp implements ResturentService{
 		
 		if(curr == null) throw new RestaurantException("No Restaurant Logged in with this key..");
 		
-		if(curr.getRole().equalsIgnoreCase("customer")) throw new RestaurantException("You are not authorized..");
+		
 		
 		if(resDto.getRestaurantId() == curr.getUserId()) {
 			Restaurant restaurant = rr.findById(resDto.getRestaurantId())
@@ -105,7 +105,7 @@ public class RestaurentServiceImp implements ResturentService{
 		
 		if(curr == null) throw new RestaurantException("No Restaurant Logged in with this key..");
 		
-		if(curr.getRole().equalsIgnoreCase("customer")) throw new RestaurantException("You are not authorized..");
+		
 		
 		if(resId == curr.getUserId()) {
 			Restaurant restaurant = rr.findById(resId)
