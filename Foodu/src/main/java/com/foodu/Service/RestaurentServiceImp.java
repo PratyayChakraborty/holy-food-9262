@@ -4,7 +4,9 @@ package com.foodu.Service;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.foodu.DTO.GetRestaurantDto;
 import com.foodu.DTO.RestaurantDTO;
+import com.foodu.DTO.RestaurantItemDto;
 import com.foodu.Exception.ItemException;
 import com.foodu.Exception.RestaurantException;
 import com.foodu.Model.Address;
@@ -19,6 +22,7 @@ import com.foodu.Model.CurrentUserSession;
 import com.foodu.Model.Item;
 import com.foodu.Model.Restaurant;
 import com.foodu.Repository.AddressRepo;
+import com.foodu.Repository.CategoryRepository;
 import com.foodu.Repository.CurrentUserRepo;
 import com.foodu.Repository.ItemRepository;
 import com.foodu.Repository.RestaurantRepository;
@@ -38,6 +42,8 @@ public class RestaurentServiceImp implements ResturentService{
 	
 	@Autowired
 	private CurrentUserRepo sessionrepo;
+	
+	private CategoryRepository cr;
 	
 	@Autowired
 	private ModelMapper modelMapper;
@@ -80,7 +86,7 @@ public class RestaurentServiceImp implements ResturentService{
 		
 		if(curr == null) throw new RestaurantException("No Restaurant Logged in with this key..");
 		
-		if(curr.getRole().equalsIgnoreCase("customer")) throw new RestaurantException("You are not authorized..");
+		
 		
 		if(resDto.getRestaurantId() == curr.getUserId()) {
 			Restaurant restaurant = rr.findById(resDto.getRestaurantId())
@@ -105,7 +111,7 @@ public class RestaurentServiceImp implements ResturentService{
 		
 		if(curr == null) throw new RestaurantException("No Restaurant Logged in with this key..");
 		
-		if(curr.getRole().equalsIgnoreCase("customer")) throw new RestaurantException("You are not authorized..");
+		
 		
 		if(resId == curr.getUserId()) {
 			Restaurant restaurant = rr.findById(resId)
@@ -168,6 +174,47 @@ public class RestaurentServiceImp implements ResturentService{
 	
 	return rDtos;
 }
+
+
+	@Override
+	public String addItemToResaurant(RestaurantItemDto RsI) throws ItemException, RestaurantException {
+
+		CurrentUserSession cru =sessionrepo.findByUuid(RsI.getKey());
+		if(cru!=null) {
+
+			Optional<Restaurant> res=rr.findById(cru.getUserId());
+			
+			if(!res.isEmpty()) {
+
+				Restaurant r=res.get();
+				
+
+				
+				List<Item> htoadd=RsI.getItemlist();
+				
+				for(Item h:htoadd) {
+					h.setRestaurant(r);
+//					ri.add(h);
+//					cr.save(h.getCategory());
+					
+					r.getItemList().add(h);
+				}
+				
+				
+				rr.save(r);
+				}
+			else {
+
+				throw new RestaurantException("There is no User With this id");
+			}
+			
+		}
+		else {
+
+			throw new RestaurantException("There is no User With this id");
+		}
+		return "Item Sucssesfully added";
+	}
 
 
 	

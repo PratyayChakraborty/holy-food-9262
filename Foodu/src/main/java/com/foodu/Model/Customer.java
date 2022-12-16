@@ -36,7 +36,7 @@ public class Customer {
 	@JsonIgnore
 	private String password;
 	
-	@Embedded
+	
 	@OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL)
 	private Set<Address> addresses = new HashSet<>();
 	

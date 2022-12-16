@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.foodu.DTO.GetRestaurantDto;
 import com.foodu.DTO.RestaurantDTO;
+import com.foodu.DTO.RestaurantItemDto;
 import com.foodu.Exception.RestaurantException;
 import com.foodu.Model.Restaurant;
 import com.foodu.Service.ResturentService;
@@ -74,12 +75,24 @@ public class RstaurantController {
 		GetRestaurantDto rest=resServ.viewRestaurant(resId);
 			return new ResponseEntity<GetRestaurantDto>(rest,HttpStatus.ACCEPTED);
 	}
+	
+	
 	@GetMapping("/viewRestaurentbyitemName/{itemName}")
-	public ResponseEntity<Set<GetRestaurantDto>> viewRestaurentbyName(@PathVariable("itemName") String itemName)
+	public ResponseEntity<Set<GetRestaurantDto>> viewRestaurentbyName(@RequestParam("itemName") String itemName)
 			throws RestaurantException {
 		
 		Set<GetRestaurantDto>  rest=resServ.viewRestaurantByItemName(itemName);
 			return new ResponseEntity<Set<GetRestaurantDto> >(rest,HttpStatus.ACCEPTED);
+	}
+	@PutMapping("/additems")
+	public ResponseEntity<String> addItemsInRes(@RequestBody RestaurantItemDto resIdto){
+		
+		String s=resServ.addItemToResaurant(resIdto);
+		
+		
+		
+		return new ResponseEntity<String>(s,HttpStatus.ACCEPTED);
+		
 	}
 	
 	
