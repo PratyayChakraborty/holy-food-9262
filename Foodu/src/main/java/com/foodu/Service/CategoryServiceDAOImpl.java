@@ -22,11 +22,13 @@ public class CategoryServiceDAOImpl implements CategoryServiceDAO{
 	@Override
 	public Category addCategory(Category category) throws CategoryException {
 		
-		Category category2 = categoryRepository.save(category);
-		if(category2==null) {
-			throw new CategoryException("Category not added");
+		
+		if(category==null) {
+			throw new CategoryException("Category is Empty");
+			
 		}else
-		return category2;
+			return 	categoryRepository.save(category);
+		
 		
 	}
 
