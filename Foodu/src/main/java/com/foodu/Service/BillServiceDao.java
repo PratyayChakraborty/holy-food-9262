@@ -20,6 +20,6 @@ public interface BillServiceDao {
 	
 	public List<Bill> viewBillsByCustomerId(String custId)throws BillException;
 	
-	public Double calculateTotalCost(Bill bill)throws BillException;
+	public Double calculateTotalCost(int billId)throws BillException;
 
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.foodu.Model.Bill;
@@ -39,6 +40,14 @@ public class BillHandler {
 		 Bill bill = bService.viewBill(billId);
 		 return new ResponseEntity<Bill>(bill,HttpStatus.OK);
 	 }
+	  
+	  
+	  //view totalamount
+	  @GetMapping("/billamount")
+		 public ResponseEntity<Double> viewTotalAmount(@RequestParam Integer billId){ 
+		            Double totalAmount = bService.calculateTotalCost(billId);
+			 return new ResponseEntity<Double>(totalAmount,HttpStatus.OK);
+		 }
 	 
 	 //
 	 @PutMapping("/bills")
