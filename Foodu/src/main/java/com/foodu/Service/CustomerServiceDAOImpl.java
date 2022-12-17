@@ -1,6 +1,7 @@
 package com.foodu.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -100,12 +101,23 @@ public class CustomerServiceDAOImpl implements CustomerServiceDAO{
 
 	@Override
 	public String deleteCustomer(Integer customerId, String key) throws CustomerException {
+		
+		
 		CurrentUserSession curr = currUserRepo.findByUuid(key);
 		
 		if(curr == null) throw new CustomerException("No Customer Logged in with this key..");
 		
 		if(customerId == curr.getUserId()) {
+			
 			Customer cust = customerRepo.findById(customerId).orElseThrow(() -> new CustomerException("No such customer exists..."));
+//			System.out.println(cust);
+			
+			Set<Address> a=cust.getAddresses();
+			for(Address ad:a){
+				AddressRepo.delete(ad);
+			}
+			
+//			cust.setAddresses(a);
 			
 	  customerRepo.delete(cust);
 		
