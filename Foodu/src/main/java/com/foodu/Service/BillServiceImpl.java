@@ -87,9 +87,9 @@ public class BillServiceImpl implements BillServiceDao{
 	}
 
 	@Override
-	public Double calculateTotalCost(Bill bill) throws BillException {
+	public Double calculateTotalCost(int billId) throws BillException {
 		// TODO Auto-generated method stub 
-		Optional<Bill> opt = bDao.findById(bill.getBillId());
+		Optional<Bill> opt = bDao.findById(billId);
 		 if(opt.isPresent()) { 
 			 Bill existingBill = opt.get();
 			 Double totalamount = existingBill.getTotalCost();
