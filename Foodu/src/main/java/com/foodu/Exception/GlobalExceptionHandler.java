@@ -11,6 +11,8 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 
+
+
 @ControllerAdvice
 public class GlobalExceptionHandler {
 	
@@ -121,6 +123,7 @@ public class GlobalExceptionHandler {
 			return new ResponseEntity<>(err,HttpStatus.BAD_REQUEST);
 						
 		}
+
 			
 		@ExceptionHandler(MethodArgumentNotValidException.class)
 		public ResponseEntity<MyErrorDetails> myMANVExceptionHandler(MethodArgumentNotValidException me) {
@@ -128,6 +131,60 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<>(err,HttpStatus.BAD_REQUEST);
 		}
 
+		
+		
+		////////////Order Details Exception///////////
+		
+		
+		@ExceptionHandler(OrderException.class)
+		public ResponseEntity<OrderErrorDetails> orderExceptionHandler(OrderException oed, WebRequest wr){
+			OrderErrorDetails err = new OrderErrorDetails();
+			err.setTimeStamp(LocalDateTime.now());
+			err.setMessage(oed.getMessage());
+			err.setDetails(wr.getDescription(false));
+			
+		    return new ResponseEntity<OrderErrorDetails>(err,HttpStatus.BAD_REQUEST);
+			
+			
+				
+		}
+		
+		
+		
+		
+		@ExceptionHandler(Exception.class)
+		public ResponseEntity<OrderErrorDetails> AnyOrderErrorExceptionHandler(Exception ie,WebRequest wr){
+			
+			
+			OrderErrorDetails err = new OrderErrorDetails();
+			err.setTimeStamp(LocalDateTime.now());
+			err.setMessage(ie.getMessage());
+			err.setDetails(wr.getDescription(false));
+			
+			
+			return new ResponseEntity<OrderErrorDetails>(err, HttpStatus.BAD_REQUEST);
+			
+		}
+		
+		
+		
+		
+		
+		
+		@ExceptionHandler(NoHandlerFoundException.class)
+		public ResponseEntity<OrderErrorDetails> myOrdernotFoundHandler(NoHandlerFoundException nfe,WebRequest req)  {
+				
+		
+			OrderErrorDetails err=new OrderErrorDetails(LocalDateTime.now(), nfe.getMessage(), req.getDescription(false));
+		
+			return new ResponseEntity<>(err,HttpStatus.BAD_REQUEST);
+						
+		}
+		
+		
+		//////////// Order Details Exception End ////////
+		
+		
 			
 
 }

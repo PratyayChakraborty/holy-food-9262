@@ -30,14 +30,14 @@ public class OrderDetails {
 	private Boolean orderStatus;
 	
 	@OneToOne
-	@JsonIgnore
+//	@JsonIgnore
 	private Address orderAddress;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Customer customer;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Restaurant restaurant;
 	
@@ -48,6 +48,98 @@ public class OrderDetails {
 	@OneToOne
 	@JsonIgnore
 	private  Bill bill;
+	
+     public OrderDetails() {
+		
+	}
 
+	public OrderDetails(Integer orderId, LocalDateTime orderDate, Boolean orderStatus, Address orderAddress,
+			Customer customer, Restaurant restaurant, List<OrderItems> itemList, Bill bill) {
+		super();
+		this.orderId = orderId;
+		this.orderDate = orderDate;
+		this.orderStatus = orderStatus;
+		this.orderAddress = orderAddress;
+		this.customer = customer;
+		this.restaurant = restaurant;
+		this.itemList = itemList;
+		this.bill = bill;
+	}
+
+	public Integer getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(Integer orderId) {
+		this.orderId = orderId;
+	}
+
+	public LocalDateTime getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(LocalDateTime orderDate) {
+		this.orderDate = orderDate;
+	}
+
+	public Boolean getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(Boolean orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+
+	public Address getOrderAddress() {
+		return orderAddress;
+	}
+
+	public void setOrderAddress(Address orderAddress) {
+		this.orderAddress = orderAddress;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
+	}
+
+	public List<OrderItems> getItemList() {
+		return itemList;
+	}
+
+	public void setItemList(List<OrderItems> itemList) {
+		this.itemList = itemList;
+	}
+
+	public Bill getBill() {
+		return bill;
+	}
+
+	public void setBill(Bill bill) {
+		this.bill = bill;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderDetails [orderId=" + orderId + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus
+				+ ", orderAddress=" + orderAddress + ", customer=" + customer + ", restaurant=" + restaurant
+				+ ", itemList=" + itemList + ", bill=" + bill + "]";
+	}
+
+	
+
+	
+	
 	
 }
