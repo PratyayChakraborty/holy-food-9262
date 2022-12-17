@@ -88,7 +88,7 @@ public class LoginServiceImp implements LoginService {
 
 				String key = RandomString.make(4);
 
-				CurrentUserSession currentUser2 = new CurrentUserSession(existingCus.getCustomerId(),dto.getRole(),key, LocalDateTime.now());
+
 
 				cus.save(currentUser2);
 
