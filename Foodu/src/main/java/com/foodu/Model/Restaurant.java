@@ -54,6 +54,13 @@ public class Restaurant {
 	@OneToMany(targetEntity = Category.class, cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Set<Category> categories = new HashSet<>();
+	
+	
+	
+
+	public Restaurant() {
+	
+	}
 
 	public Restaurant(Integer restaurantId, String restaurantName, String managerName, String contactNumber,
 			String email, String password, Address address, List<Item> itemList, List<OrderDetails> orderLists,

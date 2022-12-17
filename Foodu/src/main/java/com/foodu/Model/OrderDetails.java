@@ -37,7 +37,7 @@ public class OrderDetails {
 	@JsonIgnore
 	private Customer customer;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Restaurant restaurant;
 	

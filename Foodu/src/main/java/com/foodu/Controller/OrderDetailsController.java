@@ -1,5 +1,6 @@
 package com.foodu.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.foodu.Exception.OrderException;
 import com.foodu.Model.Address;
+import com.foodu.Model.Bill;
 import com.foodu.Model.Customer;
 import com.foodu.Model.OrderDetails;
 import com.foodu.Model.OrderItems;
@@ -37,12 +39,23 @@ public class OrderDetailsController {
 	public ResponseEntity<OrderDetails> addOrderHandler(@RequestBody @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) OrderDetails order, @PathVariable("id") Integer id) throws OrderException {
 		   
 		  Customer cust = orderService.GetCustomer(id);
-		  
 		  Set<Address> addList = cust.getAddresses();
-		  
+		  List<Address> listAddr = new ArrayList<Address>(addList);		
 		  order.setCustomer(cust);
-		  order.setOrderAddress(addList.stream().findFirst().get());
+		  if(listAddr.size() != 0) {
+		  order.setOrderAddress(listAddr.get(0));
+		  }else {
+			  order.setOrderAddress(null);
+		  }
+		  
+		  List<OrderDetails> orderList = orderService.getOrderDetailsFromCustomerID(id);
+		  Integer OrderId = orderList.get(orderList.size()-1).getOrderId();
+		  Bill bill = orderService.GetBill(OrderId);
+		  order.setBill(bill);
 
+		  Restaurant rest = orderService.getRestaurant(id);
+		  order.setRestaurant(rest);
+		 
 		  OrderDetails od = orderService.addOrder(order);
           return new ResponseEntity<OrderDetails>(od,HttpStatus.CREATED);
 	} 
@@ -55,10 +68,9 @@ public class OrderDetailsController {
 	
 	
 	@DeleteMapping("orderdetails/{id}")
-	public ResponseEntity<OrderDetails> removeProductHandler(@PathVariable("id") Integer id) throws OrderException{
-		OrderDetails od = orderService.removeOrder(id);
-		
-		return new ResponseEntity<OrderDetails>(od,HttpStatus.OK);
+	public ResponseEntity<OrderDetails> removeProductHandler(Integer id) throws OrderException{
+
+		return new ResponseEntity<OrderDetails>(orderService.removeOrder(id),HttpStatus.OK);
 		
 	}
 	
@@ -87,14 +99,8 @@ public class OrderDetailsController {
 //	}
 	
 	
-	@GetMapping("/address")
-	public ResponseEntity<List<Address>> viewAllResurentCustomerHandler() throws OrderException{
-		List<Address> addList = orderService.viewAllAdress();
-		return new ResponseEntity<List<Address>>(addList,HttpStatus.FOUND);
-		
-	}
 	
-	
+    
 	
 	
 	

@@ -25,6 +25,12 @@ public class Bill {
 	@OneToOne(cascade = CascadeType.ALL)
 	private OrderDetails order;
 
+	
+	
+	public Bill() {
+		
+	}
+
 	public Bill(Integer billId, LocalDateTime billDate, LocalDateTime billTime, Double totalCost, Integer totalItem,
 			OrderDetails order) {
 		super();
@@ -84,6 +90,7 @@ public class Bill {
 		this.order = order;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Bill [billId=" + billId + ", billDate=" + billDate + ", billTime=" + billTime + ", totalCost="

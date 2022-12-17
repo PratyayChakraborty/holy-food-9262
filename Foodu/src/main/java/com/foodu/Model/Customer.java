@@ -38,17 +38,14 @@ public class Customer {
 	@OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL,mappedBy = "customer")
 	private Set<Address> addresses = new HashSet<>();
 	
-	
-	public Customer() {
-		
-	}
 
-
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
+	@OneToMany(targetEntity = OrderDetails.class,cascade = CascadeType.ALL, mappedBy = "customer")
 	private List<OrderDetails> orders = new ArrayList<>();
 	
 	
+	public Customer() {
+		
+	}	
 //	@OneToOne(cascade = CascadeType.ALL)
 //	private FoodCart foodCart;
 
