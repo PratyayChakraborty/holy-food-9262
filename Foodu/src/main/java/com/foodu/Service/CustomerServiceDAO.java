@@ -5,11 +5,13 @@ import java.util.List;
 import com.foodu.DTO.CustomerAddressDto;
 import com.foodu.DTO.CustomerDTO;
 import com.foodu.DTO.CustomerResDTO;
+import com.foodu.DTO.GetRestaurantDto;
 import com.foodu.Exception.AddressException;
 import com.foodu.Exception.CustomerException;
 import com.foodu.Exception.RestaurantException;
 import com.foodu.Model.Address;
 import com.foodu.Model.Customer;
+import com.foodu.Model.CustomerRestaurantDTO;
 
 public interface CustomerServiceDAO {
 	
@@ -20,14 +22,11 @@ public interface CustomerServiceDAO {
 	
 	public String deleteCustomer(Integer customerId, String key) throws CustomerException;
 	
-	public List<CustomerResDTO> viewAllCustomersInRestaurant(Integer restId, String key)throws RestaurantException, CustomerException;
+	public List<CustomerRestaurantDTO> viewAllCustomersInRestaurant(Integer restaurantId, String key)throws RestaurantException, CustomerException;
 	
 	public CustomerDTO addAddress(Integer customerId, Address add, String key) throws CustomerException, AddressException;
 	
-	public CustomerDTO editAddress(Integer customerId, Address add, String key) throws CustomerException, AddressException;
-	
-	public CustomerDTO removeAddress(Integer customerId, Integer addId, String key) throws CustomerException, AddressException;
-
+	public CustomerDTO viewCustomerById(Integer customerId) throws RestaurantException ;
 	
 //	 public Customer addCustomer (Customer customer) throws CustomerException;
 //
