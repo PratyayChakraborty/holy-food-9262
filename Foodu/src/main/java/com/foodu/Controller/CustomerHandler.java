@@ -22,7 +22,7 @@ import com.foodu.Exception.RestaurantException;
 import com.foodu.Model.Address;
 import com.foodu.Model.Customer;
 import com.foodu.Model.CustomerRestaurantDTO;
-import com.foodu.Model.Restaurant;
+
 import com.foodu.Service.CustomerServiceDAO;
 
 @RestController
