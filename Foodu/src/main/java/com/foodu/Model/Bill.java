@@ -6,10 +6,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+
 @Entity
 public class Bill {
 	
@@ -21,6 +25,7 @@ public class Bill {
 	private Double totalCost;
 	private Integer totalItem;
 	
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private OrderDetails order;
 

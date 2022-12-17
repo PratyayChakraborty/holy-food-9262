@@ -19,6 +19,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+
 @Entity
 public class OrderDetails {
 	

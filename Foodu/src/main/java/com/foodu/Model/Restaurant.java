@@ -34,7 +34,7 @@ public class Restaurant {
 	private String password;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	private Address address =new Address();
+	private Address address;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "restaurant")
 	@JsonIgnore
@@ -51,26 +51,6 @@ public class Restaurant {
 	@OneToMany(targetEntity = Category.class, cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Set<Category> categories = new HashSet<>();
-
-//	public Restaurant(Integer restaurantId, String restaurantName, String managerName, String contactNumber,
-//			String email, String password, Address address) {
-//		super();
-//		this.restaurantId = restaurantId;
-//		this.restaurantName = restaurantName;
-//		this.managerName = managerName;
-//		this.contactNumber = contactNumber;
-//		this.email = email;
-//		this.password = password;
-//		this.address = address;
-//	}
-
-
-	
-	
-	
-	
-	
-	
 
 	public Restaurant() {
 	
