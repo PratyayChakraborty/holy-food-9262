@@ -17,7 +17,6 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class Address {

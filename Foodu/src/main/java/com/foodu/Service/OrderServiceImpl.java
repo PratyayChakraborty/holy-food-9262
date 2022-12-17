@@ -16,7 +16,8 @@ import com.foodu.Model.OrderItems;
 import com.foodu.Model.Restaurant;
 import com.foodu.Repository.AddressRepo;
 import com.foodu.Repository.BillRepository;
-import com.foodu.Repository.CustomerRepogitory;
+
+import com.foodu.Repository.CustomerRepository;
 import com.foodu.Repository.OrderRepo;
 import com.foodu.Repository.RestaurantRepo;
 
@@ -32,7 +33,7 @@ public class OrderServiceImpl implements OrderService{
 	private AddressRepo addrRepo;
 	
 	@Autowired
-	private CustomerRepogitory customerRepo;
+	private CustomerRepository customerRepo;
 
 	@Autowired
 	private BillRepository billRepo;

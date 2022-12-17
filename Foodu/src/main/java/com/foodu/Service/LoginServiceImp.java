@@ -88,11 +88,13 @@ public class LoginServiceImp implements LoginService {
 
 				String key = RandomString.make(4);
 
-		CurrentUserSession currentUser = new CurrentUserSession(existingRes.getRestaurantId(),dto.getRole(), key, LocalDateTime.now());
 
-				cus.save(currentUser2);
+				CurrentUserSession currentUser = new CurrentUserSession(existingCus.getCustomerId(),dto.getRole(), key, LocalDateTime.now());
 
-				return "Login Succsessfull :"+currentUser2.toString();
+				cus.save(currentUser);
+
+
+				return "Login Succsessfull :"+currentUser.toString();
 			}
 			
 			
