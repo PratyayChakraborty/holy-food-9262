@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,23 +32,21 @@ public class Customer {
 	private String gender;
 	private String mobileNumber;
 	private String email;
-	
-	@JsonIgnore
 	private String password;
 	
-	@OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL,mappedBy = "customer")
+
+	@JsonIgnore
+	@OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL)
 	private Set<Address> addresses = new HashSet<>();
 	
-
-	@OneToMany(targetEntity = OrderDetails.class,cascade = CascadeType.ALL, mappedBy = "customer")
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
 	private List<OrderDetails> orders = new ArrayList<>();
 	
-	
-	public Customer() {
-		
-	}	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	private FoodCart foodCart;
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL)
+	private FoodCart foodCart;
+
 
 
 	public Customer(Integer customerId, String fullName, Integer age, String gender, String mobileNumber, String email,

@@ -16,8 +16,92 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 	
-	@ExceptionHandler(CustomerException.class)
-	public ResponseEntity<MyErrorDetails> myExpHandler(CustomerException ie, WebRequest req){
+	@ExceptionHandler(AddressException.class)
+	public ResponseEntity<MyErrorDetails> myAnyExpHandler(AddressException ie,WebRequest req){
+		
+		MyErrorDetails err = new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ie.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	} 
+	
+	@ExceptionHandler(ItemException.class)
+	public ResponseEntity<MyErrorDetails> myAnyExpHandler(ItemException ie,WebRequest req){
+		
+		
+		MyErrorDetails err = new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ie.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	} 
+	
+	@ExceptionHandler(BillException.class)
+	public ResponseEntity<MyErrorDetails> myAnyExpHandler(BillException ie,WebRequest req){
+		
+		
+		MyErrorDetails err = new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ie.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+
+	@ExceptionHandler(RestaurantException.class)
+	public ResponseEntity<MyErrorDetails> myAnyExpHandler(RestaurantException ie,WebRequest req){
+		
+		
+		MyErrorDetails err = new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ie.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+	
+	@ExceptionHandler(CategoryException.class)
+	public ResponseEntity<MyErrorDetails> myExpHandler(CategoryException ie, WebRequest req){
+		
+		MyErrorDetails err = new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ie.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+	
+		
+	@ExceptionHandler(LoginException.class)
+	public ResponseEntity<MyErrorDetails> myAnyExpHandler(LoginException ie,WebRequest req){
+		
+		
+		MyErrorDetails err = new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ie.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<MyErrorDetails> myAnyExpHandler(Exception ie,WebRequest req){
+		
 		
 		MyErrorDetails err = new MyErrorDetails();
 		err.setTimestamp(LocalDateTime.now());
@@ -30,31 +114,16 @@ public class GlobalExceptionHandler {
 	}
 	
 	
-//	@ExceptionHandler(Exception.class)
-//	public ResponseEntity<MyErrorDetails> myAnyExpHandler(Exception ie,WebRequest req){
-//		
-//		
-//		MyErrorDetails err = new MyErrorDetails();
-//		err.setTimestamp(LocalDateTime.now());
-//		err.setMessage(ie.getMessage());
-//		err.setDetails(req.getDescription(false));
-//		
-//		
-//		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
-//		
-//	}
-	
-	
 		//to handle Not found exception 
-//		@ExceptionHandler(NoHandlerFoundException.class)
-//		public ResponseEntity<MyErrorDetails> mynotFoundHandler(NoHandlerFoundException nfe,WebRequest req)  {
-//				
-//		
-//		MyErrorDetails err=new MyErrorDetails(LocalDateTime.now(), nfe.getMessage(), req.getDescription(false));
-//		
-//			return new ResponseEntity<>(err,HttpStatus.BAD_REQUEST);
-//						
-//		}
+		@ExceptionHandler(NoHandlerFoundException.class)
+		public ResponseEntity<MyErrorDetails> mynotFoundHandler(NoHandlerFoundException nfe,WebRequest req)  {
+				
+		MyErrorDetails err=new MyErrorDetails(LocalDateTime.now(), nfe.getMessage(), req.getDescription(false));
+		
+			return new ResponseEntity<>(err,HttpStatus.BAD_REQUEST);
+						
+		}
+
 			
 		@ExceptionHandler(MethodArgumentNotValidException.class)
 		public ResponseEntity<MyErrorDetails> myMANVExceptionHandler(MethodArgumentNotValidException me) {

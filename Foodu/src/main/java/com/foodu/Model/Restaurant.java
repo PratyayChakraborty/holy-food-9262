@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,14 +18,10 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 
 @Data
-@NoArgsConstructor
 @Entity
-@EqualsAndHashCode
 public class Restaurant {
 	
 	@Id
@@ -37,7 +34,7 @@ public class Restaurant {
 	private String password;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	private Address address;
+	private Address address =new Address();
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "restaurant")
 	@JsonIgnore
@@ -54,6 +51,23 @@ public class Restaurant {
 	@OneToMany(targetEntity = Category.class, cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Set<Category> categories = new HashSet<>();
+
+//	public Restaurant(Integer restaurantId, String restaurantName, String managerName, String contactNumber,
+//			String email, String password, Address address) {
+//		super();
+//		this.restaurantId = restaurantId;
+//		this.restaurantName = restaurantName;
+//		this.managerName = managerName;
+//		this.contactNumber = contactNumber;
+//		this.email = email;
+//		this.password = password;
+//		this.address = address;
+//	}
+
+
+	
+	
+	
 	
 	
 	
