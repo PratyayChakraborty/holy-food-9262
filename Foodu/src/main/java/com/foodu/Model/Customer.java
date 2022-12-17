@@ -34,6 +34,7 @@ public class Customer {
 	private String email;
 	private String password;
 	
+
 	@JsonIgnore
 	@OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL)
 	private Set<Address> addresses = new HashSet<>();
@@ -47,8 +48,9 @@ public class Customer {
 	private FoodCart foodCart;
 
 
+
 	public Customer(Integer customerId, String fullName, Integer age, String gender, String mobileNumber, String email,
-			String password, FoodCart foodCart) {
+			String password) {
 		super();
 		this.customerId = customerId;
 		this.fullName = fullName;
@@ -57,15 +59,136 @@ public class Customer {
 		this.mobileNumber = mobileNumber;
 		this.email = email;
 		this.password = password;
-		this.foodCart = foodCart;
+//		this.foodCart = foodCart;
 	}
+
+	
+
+	public Integer getCustomerId() {
+		return customerId;
+	}
+
+
+
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
+	}
+
+
+
+	public String getFullName() {
+		return fullName;
+	}
+
+
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+
+
+	public Integer getAge() {
+		return age;
+	}
+
+
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+
+
+	public String getGender() {
+		return gender;
+	}
+
+
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+
+
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+
+
+
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+
+	public Set<Address> getAddresses() {
+		return addresses;
+	}
+
+
+
+	public void setAddresses(Set<Address> addresses) {
+		this.addresses = addresses;
+	}
+
+
+
+	public List<OrderDetails> getOrders() {
+		return orders;
+	}
+
+
+
+	public void setOrders(List<OrderDetails> orders) {
+		this.orders = orders;
+	}
+
+
+
+//	public FoodCart getFoodCart() {
+//		return foodCart;
+//	}
+//
+//
+//
+//	public void setFoodCart(FoodCart foodCart) {
+//		this.foodCart = foodCart;
+//	}
+
 
 
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", fullName=" + fullName + ", age=" + age + ", gender=" + gender
 				+ ", mobileNumber=" + mobileNumber + ", email=" + email + ", password=" + password + ", addresses="
-				+ addresses + ", foodCart=" + foodCart + "]";
+				+ addresses +  "]";
 	}
 	
 	

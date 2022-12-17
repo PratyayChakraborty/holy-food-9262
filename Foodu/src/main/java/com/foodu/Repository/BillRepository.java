@@ -1,5 +1,7 @@
 package com.foodu.Repository;
 
+
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -16,5 +18,5 @@ public interface BillRepository extends JpaRepository<Bill, Integer>{
 
 	@Query("select b from Bill b where billDate between :startDate and :endDate")
 	public List<Bill> viewBillsByDates(@Param("startDate")LocalDate startDate,@Param("startDate") LocalDate endDate) throws BillException;
-	
+
 }
