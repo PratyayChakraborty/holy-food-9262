@@ -12,4 +12,6 @@ public interface CurrentUserRepo extends JpaRepository<CurrentUserSession, Integ
 	public  CurrentUserSession  findByUuid(String uuid);
 	
 	
+	
+	
 }
