@@ -11,12 +11,12 @@
 <li>This project is developed by team of 4 Back-end Developers during project week in Masai School.</li>
  
 <h3 align=center>  Team Members </h3>
-
+- [Pratyay Chakraborty](https://github.com/Rahul9332935)
 - [Satyajit Ray](https://github.com/Satyajit0007)
 - [Divya Gupta](https://github.com/Divya1327)
 - [Aasim Syed](https://github.com/)
 - [Piyush Kumar](https://github.com/piyushfromit)
-- [Pratyay Chakraborty](https://github.com/Rahul9332935)
+
 
 # Tech Stack
 - Java
