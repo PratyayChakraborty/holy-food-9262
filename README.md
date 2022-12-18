@@ -14,9 +14,9 @@
 
 - [Satyajit Ray](https://github.com/Satyajit0007)
 - [Divya Gupta](https://github.com/Divya1327)
-- [Aasim Syed](https://github.com/)
+- [Aasim Syed](https://github.com/Aasimsyed97)
 - [Piyush Kumar](https://github.com/piyushfromit)
-- [Pratyay Chakraborty](https://github.com/Rahul9332935)
+- [Pratyay Chakraborty](https://github.com/PratyayChakraborty)
 
 # Tech Stack
 - Java
@@ -33,6 +33,11 @@
 - Login Module
 - Restaurant owner Module
 - Customer Module
+- OrderDetails Module
+- FoodCart Module
+- OrderItem Module
+- Bill Module
+
 - Category Module
 - FoodCart Module
 - Order and Bill Module
@@ -58,9 +63,9 @@
 - Update the port number, username and password as per your local database configuration.
 
 ```
-    server.port=8081
+    server.port=8888
 
-    spring.datasource.url=jdbc:mysql://localhost:3306/food;
+    spring.datasource.url=jdbc:mysql://localhost:3306/foodu_db;
     spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
     spring.datasource.username=root
     spring.datasource.password=root
@@ -68,9 +73,9 @@
 
 # API Root Endpoint
 ```
-https://localhost:8800/
+https://localhost:8888/
 ```
 ```
-http://localhost:8800/swagger-ui/
+http://localhost:8888/swagger-ui/
 ```
 # API Reference
