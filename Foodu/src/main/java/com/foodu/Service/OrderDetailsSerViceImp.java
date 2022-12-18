@@ -79,7 +79,7 @@ public class OrderDetailsSerViceImp implements OrderDetailsService {
 			throw new CustomerException("No customer Logged in with this key..");
 
 		if (curr.getRole().equalsIgnoreCase("restaurant"))
-			throw new CustomerException("Log in as a customer..");
+			throw new CustomerException("Please Log in as a customer..");
 
 		Customer c = cr.findById(curr.getUserId()).orElseThrow(() -> new CustomerException("You are not authorized.."));
 		

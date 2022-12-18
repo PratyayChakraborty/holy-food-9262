@@ -32,7 +32,7 @@ public class OrderDetailsController {
 	private OrderDetailsService or;
 	
 	
-	private CategoryServiceDAO cts;
+//	private CategoryServiceDAO cts;
 	
 	
 	
