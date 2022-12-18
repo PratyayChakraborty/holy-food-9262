@@ -48,7 +48,7 @@ public class OrderDetailsController {
 
 	}
 
-	@PutMapping("/updateitem") 
+	@PutMapping("/vieworderstatus") 
 	public ResponseEntity<OrderDetails> updataDetailsupdateItem(@RequestParam Integer itemId,
 			@RequestParam Integer orderId, @RequestParam String key)
 			throws OrderDetailsException, CustomerException, CartException, ItemException {
@@ -95,7 +95,15 @@ public class OrderDetailsController {
 
 		return new ResponseEntity<List<OrderDto>>(dt, HttpStatus.OK);
 	}
+	
+	@GetMapping("/updatestatus") 
+	public ResponseEntity<OrderDto> UpdateStatus(@RequestParam Integer OrderId, @RequestParam String Restkey)
+			throws OrderDetailsException, CustomerException, RestaurantException {
 
+		OrderDto dt = or.updateStatus(OrderId, Restkey);
+
+		return new ResponseEntity<OrderDto>(dt, HttpStatus.OK);
+	}
 
 
 	

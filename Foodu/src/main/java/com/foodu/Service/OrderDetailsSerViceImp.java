@@ -68,7 +68,7 @@ public class OrderDetailsSerViceImp implements OrderDetailsService {
 	private ModelMapper modelMapper;
 
 	
-	//add Order Details -- Tested
+
 	@Override
 	public OrderDetails addDetails(Integer addressId, String key)
 			throws OrderDetailsException, CustomerException, AddressException, CartException {
@@ -141,7 +141,7 @@ public class OrderDetailsSerViceImp implements OrderDetailsService {
 	}
 
 	
-	//update Order item -- Tested
+	
 	@Override
 	public OrderDetails updateItem(Integer itemId, Integer orderId, String key)
 			throws OrderDetailsException, CustomerException, CartException, ItemException {
@@ -193,7 +193,7 @@ public class OrderDetailsSerViceImp implements OrderDetailsService {
 	}
 
 	
-	//update Order address -- Tested
+	
 	@Override
 	public OrderDetails updateAddress(Integer addressId, Integer orderId, String key)
 			throws OrderDetailsException, CustomerException, CartException, AddressException {
@@ -241,8 +241,7 @@ public class OrderDetailsSerViceImp implements OrderDetailsService {
 
 	}
 
-	
-	//cancel Order -- Tested
+
 	@Override
 	public String cancelOrder(Integer orderId, String key) throws OrderDetailsException, CustomerException {
 
@@ -278,7 +277,7 @@ public class OrderDetailsSerViceImp implements OrderDetailsService {
 	}
 
 	
-	//view Order -- Tested
+
 	@Override
 	public OrderDto viewOrder(Integer orderId, String key) throws OrderDetailsException, CustomerException, RestaurantException {
 
@@ -315,7 +314,7 @@ public class OrderDetailsSerViceImp implements OrderDetailsService {
 	}
 
 	
-	//view All Orders -- Tested
+	
 	@Override
 	public List<OrderDto> viewAllOrders(String key) throws OrderDetailsException, CustomerException, RestaurantException {
 
@@ -365,7 +364,7 @@ public class OrderDetailsSerViceImp implements OrderDetailsService {
 	
 	
 	
-	//view All Orders -- Tested
+
 	@Override
 	public List<RestOrderDto> viewAllOrdersRestaurant(String key) throws OrderDetailsException, CustomerException, RestaurantException {
 
@@ -410,7 +409,7 @@ public class OrderDetailsSerViceImp implements OrderDetailsService {
 		}
 
 
-	//updated Status -- Tested
+
 	@Override
 	public OrderDto updateStatus(Integer orderId, String key) throws OrderDetailsException, RestaurantException {
 		
