@@ -54,23 +54,23 @@ public class BillHandler {
 	 @PutMapping("/bills")
 	 public ResponseEntity<Bill>updateBillHandler(@RequestBody Bill  bill){ 
 		 Bill updatedbill = bService.updateBill(bill);
-		 return new ResponseEntity<Bill>(bill,HttpStatus.ACCEPTED);
+		 return new ResponseEntity<Bill>(updatedbill,HttpStatus.ACCEPTED);
 	 } 
 	 
 	  
-	 @DeleteMapping("/dbills/{id}")
-	 public ResponseEntity<Bill>  removeBillHandler( @PathVariable Integer billId){ 
+	 @DeleteMapping("/dbills")
+	 public ResponseEntity<Bill>  removeBillHandler(@RequestParam Integer billId){ 
 		 
 		 Bill deletedbill = bService.removeBill(billId);
 		 return new ResponseEntity<Bill>(deletedbill, HttpStatus.OK);
 	 }
 	 
-	 @GetMapping("/allbills/{sd}/{ed}")
-	 public ResponseEntity<List<Bill>> viewBillsByDatesHandler(@PathVariable("sd") LocalDate startDate, @PathVariable("ed") LocalDate endDate){ 
-		  List<Bill> bills = bService.viewBillsByDates(startDate, endDate);
-		  return new ResponseEntity<List<Bill>>(bills,HttpStatus.OK);
-	 }
-	 
+//	 @GetMapping("/allbills/{sd}/{ed}")
+//	 public ResponseEntity<List<Bill>> viewBillsByDatesHandler(@PathVariable("sd") LocalDate startDate, @PathVariable("ed") LocalDate endDate){ 
+//		  List<Bill> bills = bService.viewBillsByDates(startDate, endDate);
+//		  return new ResponseEntity<List<Bill>>(bills,HttpStatus.OK);
+//	 }
+//	 
 	 
 	 
 	 
