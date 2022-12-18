@@ -9,7 +9,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.foodu.Model.Address;
+import com.foodu.Model.FoodCart;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -48,6 +50,7 @@ public class CustomerAddressDto {
 	
 	private Set<Address> addresses = new HashSet<>();
 	
-	
+	@JsonIgnore
+	private FoodCart fc =new FoodCart();
 
 }
