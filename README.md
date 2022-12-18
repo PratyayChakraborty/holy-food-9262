@@ -1,5 +1,11 @@
 # holy-food-9262
+<h1 align=center>Foodu</h1>
+<div align=center><img  src="./Logo/Foodu.png"></div>
+<h3 align=center>  Wellcome To Foodu App </h3>
 # REST API for an Online Food Application
+
+### This is a collaborative project, completed by a team of 4 Java backend developers at Masai School.
+
 <li>We have developed this REST API for an Online Food Booking application. This API performs
   all the fundamental CRUD operations of any Online Food Booking platform with user validation at every step.</li>
 <li>This project is developed by team of 4 Back-end Developers during project week in Masai School.</li>
@@ -11,25 +17,6 @@
 - [Aasim Syed](https://github.com/)
 - [Piyush Kumar](https://github.com/piyushfromit)
 - [Pratyay Chakraborty](https://github.com/Rahul9332935)
-
-
-<h1 align=center>Foodu</h1>
-<div align=center><img  src="./Logo/Foodu.png"></div>
-<h3 align=center>  Wellcome To Foodu App </h3>
-
-<h2> 
-       <br>
-       <br>
-       <br>
-        <br>
-       Pratyay Chakraborty
-</h2>
-
-
-
-### This is a collaborative project, completed by a team of 4 Java backend developers at Masai School.
-
-
 
 # Tech Stack
 - Java
